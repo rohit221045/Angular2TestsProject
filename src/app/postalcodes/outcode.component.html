@@ -1,0 +1,29 @@
+<div class='panel panel-primary' *ngIf='outCode'>
+    <div class='panel-heading'>
+        {{pageTitle + ': ' + outCode.outcode}}
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Code:</div>
+                    <div class='col-md-6'>{{outCode.outcode}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Longitude:</div>
+                    <div class='col-md-6'>{{outCode.longitude}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Latititude:</div>
+                    <div class='col-md-6'>{{outCode.latitude}}</div>
+                </div>
+    </div>
+    </div>
+
+    <div class='panel-footer' style="margin-top: 10px;">
+        <a class='btn btn-primary' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div> 

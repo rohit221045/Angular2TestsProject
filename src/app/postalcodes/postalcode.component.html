@@ -1,0 +1,58 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+    <div class='panel-body'>
+        <div class='row'>
+                    <div class='col-md-2'>Search by Postal Code:</div>
+                    <div class='col-md-4'>
+                        <input type='text' [(ngModel)]='searchCode' />
+                        <button class = "btn-primary" type="submit" (click)="SearchPostalCode()">Search</button>
+                    </div>
+        </div>
+        <div *ngIf='postalCodes && postalCodes.length' style="padding-top:50px;">
+        <div class='row'>
+            <div class='col-md-2'>Filter by Post Code:</div>
+            <div class='col-md-4'>
+                <input type='text' [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                      <th>Post Code</th>
+                      <th>Quality</th>
+                      <th>Eastings</th>
+                      <th>Country</th>
+                      <th>Longitude</th>
+                      <th>Latitude</th>
+                      <th>Parliamentary Constituency</th>
+                      <th>Admin Ward</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let postalcode of filteredPostalCodes'>
+                        <td>
+                                <a [routerLink]="['/outcode', postalcode.outcode]">
+                                     {{postalcode.postcode}} 
+                                </a>
+                            </td>
+                        <td>{{postalcode.quality}}</td>
+                        <td>{{postalcode.eastings}}</td>
+                        <td>{{postalcode.country}}</td>
+                        <td>{{postalcode.longitude}}</td>
+                        <td>{{postalcode.latitude}}</td>
+                        <td>{{postalcode.parliamentary_constituency}}</td>
+                        <td>{{postalcode.admin_ward}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+    Error: {{ errorMessage }}
+</div>
